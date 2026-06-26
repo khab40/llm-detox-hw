@@ -3,17 +3,39 @@
 </p>
 
 <p align="center">
-  <img alt="Python" src="https://img.shields.io/badge/Python-3.x-3776AB?style=for-the-badge&logo=python&logoColor=white" />
-  <img alt="PyTorch" src="https://img.shields.io/badge/PyTorch-2.1+-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white" />
-  <img alt="Hugging Face" src="https://img.shields.io/badge/Hugging%20Face-Datasets%20%7C%20Models-FFD21E?style=for-the-badge&logo=huggingface&logoColor=black" />
-  <img alt="Transformers" src="https://img.shields.io/badge/Transformers-4.45+-FFD21E?style=for-the-badge&logo=huggingface&logoColor=black" />
-  <img alt="PEFT LoRA" src="https://img.shields.io/badge/PEFT-LoRA-00A67E?style=for-the-badge&logo=huggingface&logoColor=white" />
-  <img alt="Qwen" src="https://img.shields.io/badge/Qwen-2.5--0.5B-5C6BC0?style=for-the-badge" />
-  <img alt="Detoxify" src="https://img.shields.io/badge/Detoxify-toxic--bert-00A36C?style=for-the-badge" />
-  <img alt="Docker" src="https://img.shields.io/badge/Docker-verl%20runtime-2496ED?style=for-the-badge&logo=docker&logoColor=white" />
-  <img alt="NVIDIA CUDA" src="https://img.shields.io/badge/NVIDIA-CUDA-76B900?style=for-the-badge&logo=nvidia&logoColor=white" />
-  <img alt="vLLM" src="https://img.shields.io/badge/vLLM-rollouts-2E7D32?style=for-the-badge" />
-  <img alt="pytest" src="https://img.shields.io/badge/pytest-tests-0A9EDC?style=for-the-badge&logo=pytest&logoColor=white" />
+  <a href="https://www.python.org/">
+    <img alt="Python" src="https://img.shields.io/badge/Python-3.x-3776AB?style=for-the-badge&logo=python&logoColor=white" />
+  </a>
+  <a href="https://pytorch.org/">
+    <img alt="PyTorch" src="https://img.shields.io/badge/PyTorch-2.1%2B-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white" />
+  </a>
+  <a href="https://huggingface.co/docs/datasets/">
+    <img alt="Hugging Face Datasets" src="https://img.shields.io/badge/Hugging%20Face-Datasets-FFD21E?style=for-the-badge&logo=huggingface&logoColor=black" />
+  </a>
+  <a href="https://huggingface.co/docs/transformers/">
+    <img alt="Transformers" src="https://img.shields.io/badge/Transformers-4.45%2B-FFD21E?style=for-the-badge&logo=huggingface&logoColor=black" />
+  </a>
+  <a href="https://huggingface.co/docs/peft/">
+    <img alt="PEFT LoRA" src="https://img.shields.io/badge/PEFT-LoRA-00A67E?style=for-the-badge&logo=huggingface&logoColor=white" />
+  </a>
+  <a href="https://huggingface.co/Qwen/Qwen2.5-0.5B">
+    <img alt="Qwen 2.5 0.5B" src="https://img.shields.io/badge/Qwen-2.5--0.5B-5C6BC0?style=for-the-badge" />
+  </a>
+  <a href="https://github.com/unitaryai/detoxify">
+    <img alt="Detoxify" src="https://img.shields.io/badge/Detoxify-toxic--bert-00A36C?style=for-the-badge" />
+  </a>
+  <a href="https://hub.docker.com/r/verlai/verl">
+    <img alt="Docker" src="https://img.shields.io/badge/Docker-verl%20runtime-2496ED?style=for-the-badge&logo=docker&logoColor=white" />
+  </a>
+  <a href="https://developer.nvidia.com/cuda-toolkit">
+    <img alt="NVIDIA CUDA" src="https://img.shields.io/badge/NVIDIA-CUDA-76B900?style=for-the-badge&logo=nvidia&logoColor=white" />
+  </a>
+  <a href="https://docs.vllm.ai/">
+    <img alt="vLLM" src="https://img.shields.io/badge/vLLM-rollouts-2E7D32?style=for-the-badge" />
+  </a>
+  <a href="https://docs.pytest.org/">
+    <img alt="pytest" src="https://img.shields.io/badge/pytest-tests-0A9EDC?style=for-the-badge&logo=pytest&logoColor=white" />
+  </a>
 </p>
 
 # LLM Post-training Homework, Option B: LLM Detox
