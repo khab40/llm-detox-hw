@@ -1,3 +1,21 @@
+<p align="center">
+  <img src="assets/github-banner.jpg" alt="LLM detox post-training workflow banner" width="100%" />
+</p>
+
+<p align="center">
+  <img alt="Python" src="https://img.shields.io/badge/Python-3.x-3776AB?style=for-the-badge&logo=python&logoColor=white" />
+  <img alt="PyTorch" src="https://img.shields.io/badge/PyTorch-2.1+-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white" />
+  <img alt="Hugging Face" src="https://img.shields.io/badge/Hugging%20Face-Datasets%20%7C%20Models-FFD21E?style=for-the-badge&logo=huggingface&logoColor=black" />
+  <img alt="Transformers" src="https://img.shields.io/badge/Transformers-4.45+-FFD21E?style=for-the-badge&logo=huggingface&logoColor=black" />
+  <img alt="PEFT LoRA" src="https://img.shields.io/badge/PEFT-LoRA-00A67E?style=for-the-badge&logo=huggingface&logoColor=white" />
+  <img alt="Qwen" src="https://img.shields.io/badge/Qwen-2.5--0.5B-5C6BC0?style=for-the-badge" />
+  <img alt="Detoxify" src="https://img.shields.io/badge/Detoxify-toxic--bert-00A36C?style=for-the-badge" />
+  <img alt="Docker" src="https://img.shields.io/badge/Docker-verl%20runtime-2496ED?style=for-the-badge&logo=docker&logoColor=white" />
+  <img alt="NVIDIA CUDA" src="https://img.shields.io/badge/NVIDIA-CUDA-76B900?style=for-the-badge&logo=nvidia&logoColor=white" />
+  <img alt="vLLM" src="https://img.shields.io/badge/vLLM-rollouts-2E7D32?style=for-the-badge" />
+  <img alt="pytest" src="https://img.shields.io/badge/pytest-tests-0A9EDC?style=for-the-badge&logo=pytest&logoColor=white" />
+</p>
+
 # LLM Post-training Homework, Option B: LLM Detox
 
 You will push `Qwen/Qwen2.5-0.5B` (the **non-Instruct** variant) away
