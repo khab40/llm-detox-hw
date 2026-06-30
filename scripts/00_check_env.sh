@@ -3,6 +3,14 @@ set -euo pipefail
 
 source "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/common.sh"
 
+LOG="${LOG:-submissions/00_check_env.log}"
+touch "$LOG"
+exec > >(tee -a "$LOG") 2>&1
+
+echo "[00_check_env] started: $(date -Is)"
+echo "[00_check_env] pwd=$(pwd)"
+echo "[00_check_env] python=${PYTHON}"
+
 "$PYTHON" - <<'PY'
 import importlib
 
@@ -36,3 +44,5 @@ if command -v docker >/dev/null 2>&1; then
 else
   echo "docker not found"
 fi
+
+echo "[00_check_env] finished: $(date -Is)"

@@ -3,7 +3,8 @@ set -euo pipefail
 
 if [[ $# -lt 3 ]]; then
   echo "usage: $0 <user@host> <remote_repo_dir> <script_path> [script args...]" >&2
-  echo "example: $0 ubuntu@1.2.3.4 ~/llm-detox-hw scripts/01_prepare_data.sh" >&2
+  echo "example: $0 ubuntu@1.2.3.4 '~/llm-detox-hw' scripts/01_prepare_data.sh" >&2
+  echo "set FORCE_KILL=1 to kill an existing tmux session with the same name" >&2
   exit 2
 fi
 
@@ -49,8 +50,12 @@ fi
 SESSION="${TMUX_SESSION:-$(basename "$SCRIPT" .sh)}"
 SESSION="${SESSION//[^A-Za-z0-9_.-]/-}"
 
-if [[ "${SSH_RUN_DIRECT:-0}" == "1" || "$SCRIPT" == "scripts/00_setup_nebius_vm.sh" ]]; then
-  ssh -t "$HOST" "cd '$REMOTE_DIR' && bash '$SCRIPT' $*"
+if [[ "${FORCE_KILL:-0}" == "1" ]]; then
+  ssh "$HOST" "cd '$REMOTE_DIR' && tmux kill-session -t '$SESSION' 2>/dev/null || true"
 else
-  ssh -t "$HOST" "cd '$REMOTE_DIR' && mkdir -p submissions && touch 'submissions/${SESSION}.tmux.log' && echo '[ssh_run] launching ${SCRIPT} in tmux session ${SESSION}' >> 'submissions/${SESSION}.tmux.log' && bash scripts/tmux_run.sh '$SESSION' '$SCRIPT' $* && sleep 2 && if test -f 'submissions/${SESSION}.tmux.log'; then echo 'remote log exists:' 'submissions/${SESSION}.tmux.log'; tail -n 20 'submissions/${SESSION}.tmux.log'; else echo 'remote log missing:' 'submissions/${SESSION}.tmux.log'; pwd; ls -lah; ls -lah submissions 2>/dev/null || true; fi"
+  ssh "$HOST" "cd '$REMOTE_DIR' && if tmux has-session -t '$SESSION' 2>/dev/null; then echo 'tmux session is still running: $SESSION' >&2; echo 'attach with: tmux attach -t $SESSION' >&2; exit 1; fi"
 fi
+
+ssh "$HOST" "cd '$REMOTE_DIR' && mkdir -p submissions && rm -f 'submissions/${SESSION}.tmux.log' 'submissions/${SESSION}.log'"
+
+exec "$(dirname "$0")/ssh_run_nebius.sh" "$HOST" "$REMOTE_DIR" "$SCRIPT" "$@"

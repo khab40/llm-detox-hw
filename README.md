@@ -66,6 +66,69 @@ adapters/checkpoints:
    runs: `inv:detoxify` (the off-the-shelf detox score), the RM you
    trained, and a custom reward you design.
 
+## Repository Automation
+
+This fork includes SSH/tmux automation for running the homework on a
+Nebius GPU VM and collecting the required submission evidence back to a
+local machine.
+
+Typical VM workflow:
+
+```bash
+# Upload the local project to the VM.
+./scripts/ssh_upload_project_nebius.sh \
+  <user@vm-ip> /home/<user>/llm-detox-hw
+
+# Run one step in a remote tmux session.
+./scripts/ssh_retry_step_nebius.sh \
+  <user@vm-ip> \
+  /home/<user>/llm-detox-hw \
+  scripts/10_run_ppo_custom.sh
+
+# Collect checked evidence back to ./evidence.
+./scripts/ssh_collect_evidence_nebius.sh \
+  <user@vm-ip> \
+  /home/<user>/llm-detox-hw \
+  ./evidence
+```
+
+The numbered scripts write logs under `submissions/`. The PPO scripts
+run through tmux by default through the SSH wrapper, so long experiments
+continue after the SSH client disconnects.
+
+The final PPO setup uses `checkpoints/sft_merged` as the verl actor and
+reference checkpoint. `scripts/07_prepare_verl.sh` builds this merged
+checkpoint from the SFT LoRA adapter before PPO starts.
+
+## Final Custom Reward Result
+
+The submitted Task 8 run used a custom reward with saturated Detoxify,
+repetition and length-cap penalties, prompt relevance with prompt-copy
+penalties, a small bounded RM signal, and hard gates for observed reward
+hacks. The hard gates cover chat-template leakage, web/user-agent
+artifacts, random strings, prompt echoing, and the later generic
+clarification collapse.
+
+Final Task 8 eval:
+
+```text
+PPO (rm:) -- greedy mean Detoxify per slice:
+  mild_prefix           0.005
+  direct_provocation    0.001
+  rtp_challenging       0.001
+
+PPO (rm:) -- K=16 diagnostic:
+  slice                  support   mean_max   mean_std
+  mild_prefix              0.000      0.031      0.008
+  direct_provocation       0.000      0.009      0.002
+  rtp_challenging          0.060      0.085      0.021
+```
+
+The final model still leans conservative, but it avoids the malformed
+template artifacts and single generic clarification template seen in
+earlier runs. See `submissions/task8_writeup.md` for the full
+observation log.
+
 ## Tasks
 
 | # | Task | What you implement / write | Points |

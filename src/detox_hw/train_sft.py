@@ -178,12 +178,13 @@ def main() -> None:
     p.add_argument("--grad-accum", type=int, default=4)
     p.add_argument("--lr", type=float, default=5e-5)
     p.add_argument("--lora-r", type=int, default=32)
+    p.add_argument("--log-every", type=int, default=50)
     a = p.parse_args()
     rows = list(read_jsonl(a.train))
     train(
         rows, Path(a.out), base_name=a.base, lr=a.lr,
         batch_size=a.batch_size, grad_accum=a.grad_accum,
-        epochs=a.epochs, lora_r=a.lora_r,
+        epochs=a.epochs, lora_r=a.lora_r, log_every=a.log_every,
     )
 
 

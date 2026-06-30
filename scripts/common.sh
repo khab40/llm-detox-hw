@@ -16,3 +16,5 @@ else
 fi
 
 mkdir -p data checkpoints outputs submissions
+
+export PYTHONUNBUFFERED="${PYTHONUNBUFFERED:-1}"
