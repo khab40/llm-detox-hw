@@ -41,8 +41,10 @@
 # LLM Post-training Homework, Option B: LLM Detox
 
 You will push `Qwen/Qwen2.5-0.5B` (the **non-Instruct** variant) away
-from hostile completions on three held-out prompt families, using SFT
-→ DPO → PPO via verl.
+from hostile completions on three held-out prompt families. The project
+uses SFT as the shared starting point for DPO evaluation and PPO via
+verl, with a separately trained reward model available as one PPO
+reward source.
 
 We start from the non-Instruct base because the Instruct variant has
 already been RLHF'd into politeness — a detox-direction homework
