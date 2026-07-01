@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/github-banner.jpg" alt="LLM detox post-training workflow banner" width="100%" />
+  <img src="assets/github-banner.jpg?v=20260701" alt="LLM detox post-training workflow banner" width="100%" />
 </p>
 
 <p align="center">
